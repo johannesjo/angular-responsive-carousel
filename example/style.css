@@ -1,92 +1,76 @@
-@-webkit-keyframes three-quarters {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+.responsive-carousel {
+  border: 1px solid blue;
+  position: relative; }
+  .responsive-carousel-rail {
+    overflow: hidden; }
+  .responsive-carousel-train {
+    transition: 0.5s all ease-out;
+    position: relative;
+    white-space: nowrap;
+    font-size: 0;
+    margin-left: -8px;
+    margin-right: -8px; }
+    .responsive-carousel-train > div {
+      text-align: left;
+      white-space: normal;
+      overflow: hidden; }
 
-@-moz-keyframes three-quarters {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-@-o-keyframes three-quarters {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-@keyframes three-quarters {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-/* Styles for old versions of IE */
-.btn-spinner {
-  font-family: sans-serif;
-  font-weight: 100; }
-
-/* :not(:required) hides this rule from IE9 and below */
-.btn-spinner:not(:required) {
-  -webkit-animation: three-quarters 1250ms infinite linear;
-  -moz-animation: three-quarters 1250ms infinite linear;
-  -ms-animation: three-quarters 1250ms infinite linear;
-  -o-animation: three-quarters 1250ms infinite linear;
-  animation: three-quarters 1250ms infinite linear;
-  border: 3px solid #8c8c8c;
-  border-right-color: transparent;
-  border-radius: 100%;
-  box-sizing: border-box;
+.responsive-carousel-slide {
   display: inline-block;
-  position: relative;
-  vertical-align: middle;
+  vertical-align: top;
   overflow: hidden;
-  text-indent: -9999px;
-  width: 18px;
-  height: 18px; }
+  padding-left: 8px;
+  padding-right: 8px; }
+  .responsive-carousel-slide img,
+  .responsive-carousel-slide picture {
+    width: 100%; }
+  .responsive-carousel--cols- .responsive-carousel-slide {
+    width: 100%; }
+  .responsive-carousel--cols-1 .responsive-carousel-slide {
+    width: 100%; }
+  .responsive-carousel--cols-2 .responsive-carousel-slide {
+    width: 50%; }
+  .responsive-carousel--cols-3 .responsive-carousel-slide {
+    width: 33.33333333333%; }
+  .responsive-carousel--cols-4 .responsive-carousel-slide {
+    width: 25%; }
+  .responsive-carousel--cols-5 .responsive-carousel-slide {
+    width: 20%; }
+  .responsive-carousel--cols-6 .responsive-carousel-slide {
+    width: 16.666666667%; }
+  .responsive-carousel--fade .responsive-carousel-slide {
+    background: transparent;
+    display: none;
+    transform: translate3d(0, 0, 0); }
+    .responsive-carousel--fade .responsive-carousel-slide.is-active {
+      display: inline-block;
+      opacity: 1;
+      z-index: 2;
+      position: relative;
+      animation: responsiveCarouselSlideFadeIn 1s ease-out; }
+    .responsive-carousel--fade .responsive-carousel-slide.was-active-before {
+      display: inline-block;
+      opacity: 0;
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: responsiveCarouselSlideFadeOut 1s; }
+    .responsive-carousel--fade .responsive-carousel-slide.has-hidden-controls {
+      z-index: 5; }
 
-.btn-spinner:not(:required) {
-  margin-left: -22px;
-  opacity: 0;
-  transition: 0.4s margin ease-out, 0.2s opacity ease-out; }
+@keyframes responsiveCarouselSlideFadeIn {
+  from {
+    opacity: 0;
+    z-index: 1; }
+  to {
+    opacity: 1;
+    z-index: 2; } }
 
-.is-loading .btn-spinner {
-  transition: 0.2s margin ease-in, 0.4s opacity ease-in;
-  margin-left: 5px;
-  opacity: 1; }
-
-.btn {
-  text-align: left; }
+@keyframes responsiveCarouselSlideFadeOut {
+  from {
+    opacity: 1;
+    z-index: 2; }
+  to {
+    opacity: 0;
+    z-index: 1; } }

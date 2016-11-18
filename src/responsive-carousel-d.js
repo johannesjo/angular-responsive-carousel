@@ -27,6 +27,7 @@
       replace: true,
       transclude: true,
       scope: {
+        indicatorsPosition: '@',
         breakpoints: '=?',
         activeIndex: '=?',
         interval: '@',

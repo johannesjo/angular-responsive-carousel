@@ -1,3 +1,114 @@
-responsive-carousel-slide {
+$this-parent-carousel-selector: '.responsive-carousel';
+$this-parent-carousel-fade-selector: '#{$this-parent-carousel-selector}--fade';
+$this-parent-carousel-cols-selector: '#{$this-parent-carousel-selector}--cols-';
 
+.responsive-carousel-slide {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+
+    // NOTE: the paddings are reflect by a negative margin
+    // in _responsive-carousel-d.scss
+    padding-left: $carousel-spacing*0.5;
+    padding-right: $carousel-spacing*0.5;
+
+    // reset font-size as we used font-size: 0 for parent
+    // to get rid of the white spaces between inline-blocks
+
+    // we want all images to be full width per default
+    img,
+    picture {
+        width: 100%;
+    }
+
+    // we set the size using the parent selector
+    // using a modifier would be more BEMy but
+    // really inefficient and possibly slow
+    #{$this-parent-carousel-cols-selector} & {
+        width: 100%;
+    }
+    #{$this-parent-carousel-cols-selector}1 & {
+        width: 100%;
+    }
+    #{$this-parent-carousel-cols-selector}2 & {
+        width: 50%;
+    }
+    #{$this-parent-carousel-cols-selector}3 & {
+        width: 33.33333333333%;
+    }
+    #{$this-parent-carousel-cols-selector}4 & {
+        width: 25%;
+    }
+    #{$this-parent-carousel-cols-selector}5 & {
+        width: 20%;
+    }
+    #{$this-parent-carousel-cols-selector}6 & {
+        width: 16.666666667%;
+    }
+
+    // STATES
+    // ------
+    // NOTE: that we only need those only for the fade variant currently
+    &.is-active {
+    }
+    &.was-active-before {
+    }
+    &.has-hidden-controls {
+    }
+
+    // VARIANTS
+    // --------
+
+    // fade variant instead of default slide
+    #{$this-parent-carousel-fade-selector} & {
+        background: transparent;
+        display: none;
+        transform: translate3d(0, 0, 0);
+
+        // NOTE: that we only need those only for the fade variant
+        &.is-active {
+            display: inline-block;
+            opacity: 1;
+            z-index: 2;
+            position: relative;
+            animation: responsiveCarouselSlideFadeIn 1s ease-out;
+        }
+        &.was-active-before {
+            display: inline-block;
+            opacity: 0;
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: responsiveCarouselSlideFadeOut 1s;
+        }
+        &.has-hidden-controls {
+            z-index: 5;
+        }
+    }
 }
+
+// component animations
+// --------------------
+@keyframes responsiveCarouselSlideFadeIn {
+    from {
+        opacity: 0;
+        z-index: 1;
+    }
+    to {
+        opacity: 1;
+        z-index: 2;
+    }
+}
+
+@keyframes responsiveCarouselSlideFadeOut {
+    from {
+        opacity: 1;
+        z-index: 2;
+    }
+    to {
+        opacity: 0;
+        z-index: 1;
+    }
+}
+

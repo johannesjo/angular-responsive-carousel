@@ -1,1 +1,16 @@
-<h1>RESPONSIVE CAROUSEL</h1>
+<div class="responsive-carousel">
+    <div data-responsive-carousel-indicators
+         data-ng-if="vm.indicatorsPosition==='BEFORE'"></div>
+
+    <div class="responsive-carousel-rail">
+        <div class="responsive-carousel-train">
+            <div class="responsive-carousel-slides"
+                 data-ng-transclude></div>
+        </div>
+    </div>
+
+    <div data-responsive-carousel-indicators
+         data-ng-if="vm.indicatorsPosition==='AFTER'"></div>
+
+    <div data-responsive-carousel-controls></div>
+</div>

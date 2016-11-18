@@ -1,4 +1,24 @@
 <h1>TEST</h1>
 
-<responsive-carousel></responsive-carousel>
-<div data-respnsive-carousel></div>
+<responsive-carousel>
+    <responsive-carousel-slide>
+        <h1>Something</h1>
+    </responsive-carousel-slide>
+    <responsive-carousel-slide>
+        <h2>Something Else</h2>
+    </responsive-carousel-slide>
+    <responsive-carousel-slide>
+        <h3>Something Different</h3>
+    </responsive-carousel-slide>
+</responsive-carousel>
+
+
+<div data-responsive-carousel
+     data-ng-init="vm.slides=[0,1,2,3,4,5,6,7,8,9]">
+    <div data-responsive-carousel-slide
+         data-ng-repeat="slide in vm.slides">
+        <h1>{{slide}}</h1>
+    </div>
+</div>
+
+

@@ -20,7 +20,7 @@
             controller: ResponsiveCarouselControlsCtrl,
             controllerAs: 'vm',
             link: linkFn,
-            restrict: 'A',
+            restrict: 'EA',
             scope: {
 
             }

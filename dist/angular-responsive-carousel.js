@@ -24,7 +24,6 @@
 (function() {
   'use strict';
 
-  ResponsiveCarouselCtrl.$inject = ["$window", "$scope", "$interval"];
   angular
     .module('angularResponsiveCarousel')
     .directive('responsiveCarousel', responsiveCarousel);
@@ -40,6 +39,7 @@
       replace: true,
       transclude: true,
       scope: {
+        indicatorsPosition: '@',
         breakpoints: '=?',
         activeIndex: '=?',
         interval: '@',
@@ -52,7 +52,7 @@
   }
 
   /* @ngInject */
-  function ResponsiveCarouselCtrl($window, $scope, $interval) {
+  function ResponsiveCarouselCtrl() {
     console.log('I am here!');
 
   }
@@ -111,22 +111,22 @@ angular.module('angularResponsiveCarousel').run(['$templateCache', function($tem
   'use strict';
 
   $templateCache.put('responsive-carousel-controls-d.html',
-    "This is the responsiveCarouselControls directive."
+    "<div>This is the responsiveCarouselControls directive.</div>"
   );
 
 
   $templateCache.put('responsive-carousel-d.html',
-    "<h1>RESPONSIVE CAROUSEL</h1>"
+    "<div class=\"responsive-carousel\"><div data-responsive-carousel-indicators data-ng-if=\"vm.indicatorsPosition==='BEFORE'\"></div><div class=\"responsive-carousel-rail\"><div class=\"responsive-carousel-train\"><div class=\"responsive-carousel-slides\" data-ng-transclude></div></div></div><div data-responsive-carousel-indicators data-ng-if=\"vm.indicatorsPosition==='AFTER'\"></div><div data-responsive-carousel-controls></div></div>"
   );
 
 
   $templateCache.put('responsive-carousel-indicators-d.html',
-    "This is the responsiveCarouselIndicators directive."
+    "<div>This is the responsiveCarouselIndicators directive.</div>"
   );
 
 
   $templateCache.put('responsive-carousel-slide-d.html',
-    "This is the responsiveCarouselSlide directive."
+    "<div class=\"responsive-carousel-slide\" data-ng-transclude></div>"
   );
 
 }]);
@@ -153,7 +153,7 @@ angular.module('angularResponsiveCarousel').run(['$templateCache', function($tem
             controller: ResponsiveCarouselControlsCtrl,
             controllerAs: 'vm',
             link: linkFn,
-            restrict: 'A',
+            restrict: 'EA',
             scope: {
 
             }
@@ -193,7 +193,7 @@ angular.module('angularResponsiveCarousel').run(['$templateCache', function($tem
             controller: ResponsiveCarouselIndicatorsCtrl,
             controllerAs: 'vm',
             link: linkFn,
-            restrict: 'A',
+            restrict: 'EA',
             scope: {
 
             }
@@ -219,34 +219,33 @@ angular.module('angularResponsiveCarousel').run(['$templateCache', function($tem
  */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('angularResponsiveCarousel')
-        .directive('responsiveCarouselSlide', responsiveCarouselSlide);
+  angular
+    .module('angularResponsiveCarousel')
+    .directive('responsiveCarouselSlide', responsiveCarouselSlide);
 
-    /* @ngInject */
-    function responsiveCarouselSlide() {
-        return {
-            templateUrl: 'responsive-carousel-slide-d.html',
-            bindToController: true,
-            controller: ResponsiveCarouselSlideCtrl,
-            controllerAs: 'vm',
-            link: linkFn,
-            restrict: 'A',
-            scope: {
+  /* @ngInject */
+  function responsiveCarouselSlide() {
+    return {
+      templateUrl: 'responsive-carousel-slide-d.html',
+      bindToController: true,
+      controller: ResponsiveCarouselSlideCtrl,
+      controllerAs: 'vm',
+      link: linkFn,
+      transclude: true,
+      restrict: 'EA',
+      scope: {}
+    };
 
-            }
-        };
+    function linkFn(scope, element, attrs) {
 
-        function linkFn(scope, element, attrs) {
-
-        }
     }
+  }
 
-    /* @ngInject */
-    function ResponsiveCarouselSlideCtrl() {
-        var vm = this;
-    }
+  /* @ngInject */
+  function ResponsiveCarouselSlideCtrl() {
+    var vm = this;
+  }
 
 })();
