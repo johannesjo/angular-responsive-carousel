@@ -1,0 +1,59 @@
+{
+  "generator-moda": {
+    "testSuffix": ".spec",
+    "testPassOnDefault": true,
+    "alwaysSkipDialog": false,
+    "stylePrefix": "_",
+    "editorCommand": "idea",
+    "uiRouter": false,
+    "pathOutputStyle": "dasherize",
+    "fileExt": {
+      "script": ".js",
+      "tpl": ".html",
+      "style": ".scss"
+    },
+    "dirs": {
+      "app": "angularResponsiveCarousel",
+      "appModules": "",
+      "globalComponents": ""
+    },
+    "subGenerators": {
+      "directive": {
+        "suffix": "-d",
+        "globalDir": "",
+        "createDirectory": false
+      },
+      "controller": {
+        "suffix": "-c",
+        "nameSuffix": "Ctrl",
+        "globalDir": "",
+        "createDirectory": false
+      },
+      "service": {
+        "suffix": "-s",
+        "globalDir": ""
+      },
+      "factory": {
+        "suffix": "-f",
+        "globalDir": ""
+      },
+      "filter": {
+        "suffix": "-filter",
+        "globalDir": ""
+      },
+      "provider": {
+        "suffix": "-p",
+        "globalDir": ""
+      },
+      "decorator": {
+        "suffix": "-decorator",
+        "nameSuffix": "Decorator",
+        "globalDir": ""
+      },
+      "mod": {
+        "prefix": "_",
+        "createDirectory": true
+      }
+    }
+  }
+}
